@@ -33,24 +33,24 @@
   const COMPONENT_LANGS = new Set(['diagram', 'flow', 'layers', 'quiz', 'checklist', 'scenario', 'tabs', 'compare']);
 
   function preprocess(md, ctx) {
-    // Split into code and non-code segments so we never touch fenced blocks.
-    const segs = md.split(/(```[\s\S]*?```)/g);
-    return segs.map((seg, i) => {
-      if (i % 2 === 1) return seg;
-      // callouts  :::kind Optional title ... :::
-      seg = seg.replace(/^:::(\w+)(?:\s+([^\n]*))?\n([\s\S]*?)\n:::[ \t]*$/gm, (_, kind, title, body) => {
-        kind = kind.toLowerCase();
-        if (kind === 'details') return `<details class="expand"><summary>${esc(title || 'Show more')}</summary><div class="expand-body">\n\n${body}\n\n</div></details>`;
-        const t = title || CALLOUT_TITLES[kind] || kind;
-        const cls = kind === 'prereq' ? 'objectives' : kind;
-        return `<div class="callout ${cls}"><div class="callout-title"><span>${CALLOUT_ICONS[kind] || '•'}</span>${esc(t)}</div>\n\n${body}\n\n</div>`;
-      });
-      // glossary terms [[term]] or [[term|shown text]]
-      seg = seg.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, term, shown) => `<span class="term" data-term="${esc(term.trim().toLowerCase())}">${esc(shown || term)}</span>`);
-      // file labels  @file: path
-      seg = seg.replace(/^@file:\s*(.+)$/gm, '<div class="file-label">$1</div>');
-      return seg;
-    }).join('');
+    // Protect fenced code blocks with placeholders so the regexes below never touch them,
+    // while still allowing callouts to *contain* fenced code.
+    const codes = [];
+    let seg = md.replace(/```[\s\S]*?```/g, (m) => { codes.push(m); return `\u0000CODE${codes.length - 1}\u0000`; });
+    // callouts  :::kind Optional title ... :::
+    seg = seg.replace(/^:::(\w+)(?:[ \t]+([^\n]*))?\n([\s\S]*?)\n:::[ \t]*$/gm, (_, kind, title, body) => {
+      kind = kind.toLowerCase();
+      if (kind === 'details') return `<details class="expand"><summary>${esc(title || 'Show more')}</summary><div class="expand-body">\n\n${body}\n\n</div></details>`;
+      const t = title || CALLOUT_TITLES[kind] || kind;
+      const cls = kind === 'prereq' ? 'objectives' : kind;
+      return `<div class="callout ${cls}"><div class="callout-title"><span>${CALLOUT_ICONS[kind] || '•'}</span>${esc(t)}</div>\n\n${body}\n\n</div>`;
+    });
+    // glossary terms [[term]] or [[term|shown text]]
+    seg = seg.replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, term, shown) => `<span class="term" data-term="${esc(term.trim().toLowerCase())}">${esc(shown || term)}</span>`);
+    // file labels  @file: path  (blank line after the div so the following fence is not swallowed into the HTML block)
+    seg = seg.replace(/^@file:\s*(.+)$/gm, '<div class="file-label">$1</div>\n');
+    // restore code blocks
+    return seg.replace(/\u0000CODE(\d+)\u0000/g, (_, i) => codes[+i]);
   }
 
   function makeRenderer(ctx) {

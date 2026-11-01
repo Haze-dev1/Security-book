@@ -97,8 +97,15 @@ window.Components = (function () {
      spec: { title, actors:[{id,label}], steps:[{from,to,label,title,detail,note}] } */
   function flow(container, spec) {
     wrap(container, 'flow', spec.title);
-    const actors = spec.actors; const steps = spec.steps;
-    const AW = 118, AH = 36, GAP = 40, TOP = 14, STEP_H = 34, PAD = 16;
+    // Accept either actors:[{id,label}] or participants:["Label", ...] (ids = labels)
+    let actors = spec.actors;
+    if (!actors && Array.isArray(spec.participants)) {
+      actors = spec.participants.map((p) => (typeof p === 'string' ? { id: p, label: p } : p));
+    }
+    actors = actors || [];
+    const steps = (spec.steps || []).filter((st) => actors.some((a) => a.id === st.from) && actors.some((a) => a.id === st.to));
+    const maxLabel = Math.max(6, ...actors.map((a) => String(a.label || '').length));
+    const AW = Math.min(190, Math.max(118, Math.round(maxLabel * 7.4 + 18))), AH = 36, GAP = 40, TOP = 14, STEP_H = 34, PAD = 16;
     const idx = Object.fromEntries(actors.map((a, i) => [a.id, i]));
     const cx = (i) => PAD + i * (AW + GAP) + AW / 2;
     const svgW = PAD * 2 + actors.length * AW + (actors.length - 1) * GAP;
@@ -112,7 +119,11 @@ window.Components = (function () {
       const y = TOP + AH + 26 + k * STEP_H;
       const a = idx[st.from], b = idx[st.to];
       let path, tx, anchor = 'middle';
-      if (a === b) { const x = cx(a); path = `M${x} ${y - 8}H${x + 34}V${y + 8}H${x + 2}`; tx = x + 40; anchor = 'start'; }
+      if (a === b) {
+        const x = cx(a);
+        if (x > svgW / 2) { path = `M${x} ${y - 8}H${x - 34}V${y + 8}H${x - 2}`; tx = x - 40; anchor = 'end'; }
+        else { path = `M${x} ${y - 8}H${x + 34}V${y + 8}H${x + 2}`; tx = x + 40; anchor = 'start'; }
+      }
       else { const x1 = cx(a), x2 = cx(b); const dir = x2 > x1 ? -1 : 1; path = `M${x1} ${y}L${x2 + dir * 2} ${y}`; tx = (x1 + x2) / 2; }
       s += `<g class="msg" data-k="${k}" style="color:var(--fg-faint);cursor:pointer"><path d="${path}" marker-end="url(#farr-${container.id})" ${st.dashed ? 'stroke-dasharray="4 3"' : ''}/><circle class="dot" cx="${cx(a)}" cy="${y}" r="3" fill="var(--fg-faint)"/><text x="${tx}" y="${y - 5}" text-anchor="${anchor}">${esc(k + 1)}. ${esc(st.label)}</text></g>`;
     });
