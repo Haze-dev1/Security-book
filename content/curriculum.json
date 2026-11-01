@@ -1,0 +1,1154 @@
+{
+  "title": "The Production Engineering Handbook",
+  "parts": [
+    {
+      "id": "p01",
+      "num": "I",
+      "title": "Foundations of Production Software Engineering",
+      "desc": "What professional engineers rely on before any infrastructure: how code becomes a running process, the operating system underneath it, Linux, configuration, dependencies, Git, environments and what production-ready really means.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "From Source Code to Production: The Whole Picture",
+          "desc": "The complete journey of a line of code to a request served in production, and every system it touches on the way."
+        },
+        {
+          "id": "c02",
+          "title": "Compilers, Interpreters, Runtimes and Processes",
+          "desc": "What actually executes when you run Python, Node or Go, and why that matters for deployment, performance and debugging."
+        },
+        {
+          "id": "c03",
+          "title": "Operating System Fundamentals",
+          "desc": "Kernel versus user space, scheduling, I/O, and the abstractions every server program lives inside."
+        },
+        {
+          "id": "c04",
+          "title": "Linux Essentials for Backend Engineers",
+          "desc": "The shell, filesystem layout, text tools, pipes, and the daily commands you need to operate servers confidently."
+        },
+        {
+          "id": "c05",
+          "title": "Filesystems, Permissions, Users and Groups",
+          "desc": "How Linux decides who can read, write or execute what, and how to set permissions that protect secrets and services."
+        },
+        {
+          "id": "c06",
+          "title": "Processes, Threads, Signals and System Calls",
+          "desc": "How programs become processes, how they are stopped, how they talk to the kernel, and what SIGTERM means for your deployment."
+        },
+        {
+          "id": "c07",
+          "title": "Memory Management Fundamentals",
+          "desc": "Virtual memory, heaps and stacks, swap, the OOM killer, and why containers die with exit code 137."
+        },
+        {
+          "id": "c08",
+          "title": "Environment Variables and Configuration",
+          "desc": "Twelve-factor configuration, .env files, config precedence, and keeping secrets out of code."
+        },
+        {
+          "id": "c09",
+          "title": "Package Managers, Dependencies and Reproducible Builds",
+          "desc": "Lockfiles, dependency pinning, semantic version ranges, vendoring, and why 'works on my machine' happens."
+        },
+        {
+          "id": "c10",
+          "title": "Git Workflows, Branching, Pull Requests and Releases",
+          "desc": "Trunk-based development, feature branches, review flow, tags, and how teams ship without chaos."
+        },
+        {
+          "id": "c11",
+          "title": "Environments: Development, Staging and Production",
+          "desc": "Why multiple environments exist, how they differ, parity, data handling and promotion between them."
+        },
+        {
+          "id": "c12",
+          "title": "Software Development Lifecycle and Engineering Documentation",
+          "desc": "How work flows from idea to operation in real teams, and the documents that keep systems understandable."
+        },
+        {
+          "id": "c13",
+          "title": "Semantic Versioning and Release Management",
+          "desc": "Versioning APIs and artifacts, changelogs, release notes, deprecation policies and compatibility."
+        },
+        {
+          "id": "c14",
+          "title": "Monoliths, Modular Monoliths and Microservices",
+          "desc": "Architectural styles, when each is appropriate, and the operational cost that is usually underestimated."
+        },
+        {
+          "id": "c15",
+          "title": "What Production-Ready Actually Means",
+          "desc": "A rigorous definition of production readiness and the checklist that follows from it."
+        }
+      ]
+    },
+    {
+      "id": "p02",
+      "num": "II",
+      "title": "Computer Networking from First Principles",
+      "desc": "How bits travel from a browser to your server and back: IP, TCP, DNS, HTTP, TLS, proxies, load balancers, firewalls, CDNs, and the tools that let you see all of it.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "How the Internet Works",
+          "desc": "Packets, routers, autonomous systems, ISPs and the layered design that lets any machine talk to any other."
+        },
+        {
+          "id": "c02",
+          "title": "The OSI and TCP/IP Models",
+          "desc": "Layering, encapsulation, and a working mental model for debugging at the right layer."
+        },
+        {
+          "id": "c03",
+          "title": "IP Addresses, CIDR and Subnetting",
+          "desc": "IPv4 and IPv6 addressing, prefixes, subnet math, and how VPC address plans are designed."
+        },
+        {
+          "id": "c04",
+          "title": "Private Networks, MAC Addresses, ARP, Routing and NAT",
+          "desc": "How packets find their way across local networks and through NAT to the Internet."
+        },
+        {
+          "id": "c05",
+          "title": "Ports, Sockets and Connections",
+          "desc": "What a socket is, ephemeral ports, listening versus connected, and what 'address already in use' means."
+        },
+        {
+          "id": "c06",
+          "title": "TCP versus UDP and the TCP Connection Lifecycle",
+          "desc": "Handshakes, sequence numbers, flow and congestion control, teardown, and timeouts."
+        },
+        {
+          "id": "c07",
+          "title": "DNS Resolution",
+          "desc": "Resolvers, authoritative servers, record types, TTLs, caching, and the failures DNS causes in production."
+        },
+        {
+          "id": "c08",
+          "title": "HTTP/1.1, HTTP/2 and HTTP/3",
+          "desc": "Request and response anatomy, keep-alive, multiplexing, QUIC, headers, status codes and caching semantics."
+        },
+        {
+          "id": "c09",
+          "title": "HTTPS and the TLS Handshake",
+          "desc": "Key exchange, cipher suites, TLS 1.3, session resumption, and what a terminated TLS connection means."
+        },
+        {
+          "id": "c10",
+          "title": "Certificates and Certificate Authorities",
+          "desc": "Chains of trust, Let's Encrypt and ACME, expiry, revocation, and the outages caused by certificates."
+        },
+        {
+          "id": "c11",
+          "title": "Cookies and Sessions",
+          "desc": "How state is carried over a stateless protocol, cookie attributes, and session storage designs."
+        },
+        {
+          "id": "c12",
+          "title": "Proxies and Reverse Proxies with Nginx and Caddy",
+          "desc": "Forward and reverse proxies, buffering, headers, TLS termination, and production configuration."
+        },
+        {
+          "id": "c13",
+          "title": "Load Balancing",
+          "desc": "Why one server is not enough, L4 versus L7, algorithms, health checks, affinity, and AWS ALB versus NLB."
+        },
+        {
+          "id": "c14",
+          "title": "WebSockets, Server-Sent Events and gRPC",
+          "desc": "Beyond request-response: persistent connections, streaming, and binary RPC."
+        },
+        {
+          "id": "c15",
+          "title": "Firewalls and Network Access Control",
+          "desc": "Stateful filtering, default deny, security groups, host firewalls and segmentation."
+        },
+        {
+          "id": "c16",
+          "title": "VPNs and Private Connectivity",
+          "desc": "Site-to-site and client VPNs, WireGuard, bastions, SSM Session Manager, and private links."
+        },
+        {
+          "id": "c17",
+          "title": "CDNs and Edge Networks",
+          "desc": "Caching at the edge, cache keys, invalidation, origin shielding and when a CDN matters."
+        },
+        {
+          "id": "c18",
+          "title": "Latency, Throughput, Bandwidth and Packet Loss",
+          "desc": "The physics of network performance and how it shapes architecture."
+        },
+        {
+          "id": "c19",
+          "title": "Network Debugging Toolkit",
+          "desc": "curl, dig, ping, traceroute, ss, tcpdump, nc and openssl: a systematic approach to 'it does not connect'."
+        },
+        {
+          "id": "c20",
+          "title": "What Happens When You Type a URL",
+          "desc": "An interactive, end-to-end walk through every system involved in loading one page."
+        }
+      ]
+    },
+    {
+      "id": "p03",
+      "num": "III",
+      "title": "Web Application Architecture",
+      "desc": "How frontends, APIs, databases, queues, caches and third-party services fit together into an application that behaves predictably under real traffic.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "Client-Server and Multi-Tier Architecture",
+          "desc": "Separation of concerns across tiers, where state lives, and why tiers are scaled independently."
+        },
+        {
+          "id": "c02",
+          "title": "REST API Design",
+          "desc": "Resources, methods, status codes, versioning, pagination, filtering, validation and consistent error shapes."
+        },
+        {
+          "id": "c03",
+          "title": "Idempotency",
+          "desc": "Why retries are dangerous without it, idempotency keys, and implementing safe payment-style operations."
+        },
+        {
+          "id": "c04",
+          "title": "The Request Lifecycle and Middleware",
+          "desc": "What happens inside your server between the socket and your handler, with FastAPI and Express examples."
+        },
+        {
+          "id": "c05",
+          "title": "API Gateways and Rate Limiting",
+          "desc": "Edge policy enforcement, authentication offload, throttling algorithms and protecting downstream services."
+        },
+        {
+          "id": "c06",
+          "title": "Background Jobs and Asynchronous Processing",
+          "desc": "Moving slow work off the request path safely: workers, scheduling, retries and visibility."
+        },
+        {
+          "id": "c07",
+          "title": "Message Queues and Event-Driven Systems",
+          "desc": "Queues versus streams, delivery guarantees, ordering, dead-letter queues, SQS, RabbitMQ and Kafka."
+        },
+        {
+          "id": "c08",
+          "title": "Caching Layers",
+          "desc": "Where to cache, what to cache, TTLs, invalidation, stampedes and Redis in practice."
+        },
+        {
+          "id": "c09",
+          "title": "File Uploads and Object Storage",
+          "desc": "Presigned URLs, validation, virus scanning, S3 design, and serving user content safely."
+        },
+        {
+          "id": "c10",
+          "title": "Webhooks",
+          "desc": "Designing, securing, verifying and reliably delivering webhooks in both directions."
+        },
+        {
+          "id": "c11",
+          "title": "Real-Time Applications",
+          "desc": "Choosing between polling, SSE, WebSockets and push; scaling connections; presence and fan-out."
+        },
+        {
+          "id": "c12",
+          "title": "Configuration Management and Error Handling",
+          "desc": "Typed config loading, failing fast, error taxonomies, and what to show users versus logs."
+        },
+        {
+          "id": "c13",
+          "title": "Transaction Boundaries",
+          "desc": "Where transactions start and end, the unit-of-work pattern, and avoiding partial writes across services."
+        },
+        {
+          "id": "c14",
+          "title": "API Contracts and OpenAPI",
+          "desc": "Schema-first design, generated clients, contract testing and breaking-change detection."
+        },
+        {
+          "id": "c15",
+          "title": "Multi-Tenancy and Tenant Isolation",
+          "desc": "Shared schema, schema-per-tenant and database-per-tenant; row-level security; the leaks that happen in practice."
+        }
+      ]
+    },
+    {
+      "id": "p04",
+      "num": "IV",
+      "title": "Application Security",
+      "desc": "Defensive engineering in depth: principles, threat modeling, authentication and authorization, the major vulnerability classes with vulnerable and fixed code, cryptography, secrets, supply chain, testing, logging and privacy.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "Core Security Principles",
+          "desc": "Confidentiality, integrity, availability, least privilege, defense in depth, secure by default and failing closed."
+        },
+        {
+          "id": "c02",
+          "title": "Threat Modeling and Trust Boundaries",
+          "desc": "A practical method for finding what can go wrong before you build, using STRIDE and data-flow diagrams."
+        },
+        {
+          "id": "c03",
+          "title": "Authentication versus Authorization",
+          "desc": "Identity, credentials, sessions and permissions as separate problems with separate failure modes."
+        },
+        {
+          "id": "c04",
+          "title": "Session-Based Authentication",
+          "desc": "Server-side sessions done correctly: generation, storage, rotation, expiry, logout and fixation."
+        },
+        {
+          "id": "c05",
+          "title": "JWTs: Limitations and Safe Usage",
+          "desc": "What JSON Web Tokens are for, how they are misused, algorithm confusion, revocation and sane patterns."
+        },
+        {
+          "id": "c06",
+          "title": "OAuth 2.0, OpenID Connect and SSO",
+          "desc": "Delegated authorization, authorization code flow with PKCE, ID tokens, SAML in brief, and integrating with client identity providers."
+        },
+        {
+          "id": "c07",
+          "title": "Authorization Models: RBAC, ABAC and Resource-Level Access",
+          "desc": "Designing permission systems that survive growth and the IDOR bugs that happen when you skip resource checks."
+        },
+        {
+          "id": "c08",
+          "title": "Password Storage, MFA and Passkeys",
+          "desc": "Argon2 and bcrypt, breach-resistant design, TOTP, WebAuthn and account-recovery pitfalls."
+        },
+        {
+          "id": "c09",
+          "title": "Cookie Security and CSRF",
+          "desc": "Secure, HttpOnly, SameSite, prefixes, and how cross-site request forgery works and is prevented."
+        },
+        {
+          "id": "c10",
+          "title": "Cross-Site Scripting (XSS)",
+          "desc": "Reflected, stored and DOM XSS, output encoding, templating safety, and Content Security Policy as backstop."
+        },
+        {
+          "id": "c11",
+          "title": "SQL Injection",
+          "desc": "Why string concatenation is fatal, parameterised queries, ORMs, and the cases ORMs do not protect."
+        },
+        {
+          "id": "c12",
+          "title": "SSRF, Command Injection and Path Traversal",
+          "desc": "Server-side request forgery against cloud metadata, shell injection, and file path attacks with hardened code."
+        },
+        {
+          "id": "c13",
+          "title": "Insecure Deserialization and Mass Assignment",
+          "desc": "Trusting serialized input, pickle and friends, and binding request bodies directly to models."
+        },
+        {
+          "id": "c14",
+          "title": "CORS and the Same-Origin Policy",
+          "desc": "What the browser enforces, what CORS relaxes, and the misconfigurations that expose APIs."
+        },
+        {
+          "id": "c15",
+          "title": "Security Headers and Content Security Policy",
+          "desc": "HSTS, CSP, frame protections, referrer policy and permissions policy with working configurations."
+        },
+        {
+          "id": "c16",
+          "title": "Cryptography for Engineers",
+          "desc": "Symmetric and asymmetric encryption, hashing, MACs, signatures, randomness, and encryption at rest and in transit."
+        },
+        {
+          "id": "c17",
+          "title": "Key Management and Secrets Management",
+          "desc": "Envelope encryption, KMS, rotation, secret stores, and getting secrets into running processes safely."
+        },
+        {
+          "id": "c18",
+          "title": "API Keys and Service Credentials",
+          "desc": "Issuing, scoping, storing, rotating and revoking machine credentials; IAM roles instead of static keys."
+        },
+        {
+          "id": "c19",
+          "title": "The OWASP Top 10 Walkthrough",
+          "desc": "Each category mapped to concrete code, tests and mitigations in this book."
+        },
+        {
+          "id": "c20",
+          "title": "Secure Dependency Management and Supply Chain Security",
+          "desc": "Lockfiles, vulnerability scanning, typosquatting, build provenance, SBOMs and signing."
+        },
+        {
+          "id": "c21",
+          "title": "Security Testing",
+          "desc": "SAST, DAST, dependency audits, security unit tests, and when to engage a penetration test."
+        },
+        {
+          "id": "c22",
+          "title": "Audit Logging",
+          "desc": "What to log for accountability, what never to log, tamper evidence and retention."
+        },
+        {
+          "id": "c23",
+          "title": "Data Privacy and Personally Identifiable Information",
+          "desc": "PII classification, minimisation, GDPR-style obligations, data subject requests and deletion."
+        },
+        {
+          "id": "c24",
+          "title": "How Client Data Leaks Actually Happen",
+          "desc": "Post-mortems of common real-world leak patterns: public buckets, leaked keys, IDOR, logs, backups and misconfigured defaults."
+        }
+      ]
+    },
+    {
+      "id": "p05",
+      "num": "V",
+      "title": "Infrastructure and Linux Server Administration",
+      "desc": "How to operate real servers: hardware and virtualisation, SSH, hardening, systemd, disks, networking, firewalls, TLS, logs, monitoring, backups, patching and recovering from the incidents that will happen.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "Servers: Physical, Virtual, Containers and Serverless",
+          "desc": "Bare metal, hypervisors, instance types, CPU/RAM/disk sizing, and choosing the right compute model."
+        },
+        {
+          "id": "c02",
+          "title": "Linux Server Architecture and the Boot Process",
+          "desc": "Firmware to init to your service: what runs on a server and in what order."
+        },
+        {
+          "id": "c03",
+          "title": "SSH and Key-Based Access",
+          "desc": "Public key authentication, agent forwarding, config, hardening sshd, and access patterns for teams."
+        },
+        {
+          "id": "c04",
+          "title": "Server Hardening and User Management",
+          "desc": "Minimal attack surface, sudo, unattended upgrades, fail2ban, kernel parameters and auditing."
+        },
+        {
+          "id": "c05",
+          "title": "systemd, Services and Process Supervision",
+          "desc": "Unit files, restarts, dependencies, resource limits, sandboxing options and running an app as a service."
+        },
+        {
+          "id": "c06",
+          "title": "Disks, Partitions and Filesystems",
+          "desc": "Block devices, mounting, ext4 and XFS, LVM, inodes, and what 'no space left' really means."
+        },
+        {
+          "id": "c07",
+          "title": "Network Configuration and Host Firewalls",
+          "desc": "Interfaces, routes, DNS settings, ufw and nftables, and locking down a server's ports."
+        },
+        {
+          "id": "c08",
+          "title": "TLS Certificates and Reverse Proxy Configuration",
+          "desc": "Let's Encrypt with Caddy and certbot, Nginx as TLS terminator, renewals and strong defaults."
+        },
+        {
+          "id": "c09",
+          "title": "Logs and journald",
+          "desc": "Where logs live, journalctl, rotation, shipping, and reading logs under pressure."
+        },
+        {
+          "id": "c10",
+          "title": "Resource Monitoring on a Server",
+          "desc": "top, htop, vmstat, iostat, free, df, load average and interpreting saturation."
+        },
+        {
+          "id": "c11",
+          "title": "Backups, Restoration and Disaster Recovery",
+          "desc": "The 3-2-1 rule, snapshotting, database dumps, encrypted off-site copies and proving you can restore."
+        },
+        {
+          "id": "c12",
+          "title": "OS Patching and Routine Maintenance",
+          "desc": "Patch cadence, reboots, kernel updates, maintenance windows and immutable alternatives."
+        },
+        {
+          "id": "c13",
+          "title": "Infrastructure Troubleshooting and Common Incidents",
+          "desc": "A method for diagnosing servers plus the incidents every operator eventually meets."
+        },
+        {
+          "id": "c14",
+          "title": "Walkthrough: A Secure Linux Server for a Backend Application",
+          "desc": "End-to-end: provision, harden, deploy a service, add TLS, logging, monitoring and backups."
+        }
+      ]
+    },
+    {
+      "id": "p06",
+      "num": "VI",
+      "title": "Containers, Docker and Kubernetes",
+      "desc": "Why containers exist, how they really work, how to build and run them safely, and when orchestration with Kubernetes is worth its considerable complexity.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "Why Containers Exist: Namespaces and cgroups",
+          "desc": "Isolation without virtual machines, and what a container actually is at the kernel level."
+        },
+        {
+          "id": "c02",
+          "title": "Images, Layers and Registries",
+          "desc": "Content-addressed layers, tags versus digests, ECR and Docker Hub, and pulling images reproducibly."
+        },
+        {
+          "id": "c03",
+          "title": "Dockerfiles and Multi-Stage Builds",
+          "desc": "Writing small, cacheable, secure images for Python and Node applications."
+        },
+        {
+          "id": "c04",
+          "title": "Docker Compose",
+          "desc": "Multi-container local environments, networks, volumes, healthchecks and profiles."
+        },
+        {
+          "id": "c05",
+          "title": "Container Networking, Volumes and Persistence",
+          "desc": "Bridge networks, published ports, DNS between containers, bind mounts, named volumes and data safety."
+        },
+        {
+          "id": "c06",
+          "title": "Secrets, Configuration, Resource Limits and Production Containers",
+          "desc": "Injecting config without baking it in, limiting CPU and memory, and the difference between dev and prod images."
+        },
+        {
+          "id": "c07",
+          "title": "Image Security",
+          "desc": "Base image choice, non-root users, scanning, SBOMs, signing and runtime hardening."
+        },
+        {
+          "id": "c08",
+          "title": "Container Orchestration and Kubernetes Architecture",
+          "desc": "Control plane, nodes, kubelet, the API server and the reconciliation loop."
+        },
+        {
+          "id": "c09",
+          "title": "Pods, Deployments and Services",
+          "desc": "The core workload objects, labels and selectors, and how traffic reaches a pod."
+        },
+        {
+          "id": "c10",
+          "title": "Ingress, Gateway API, ConfigMaps, Secrets and Persistent Volumes",
+          "desc": "Getting traffic in, configuring apps, and storage in a cluster."
+        },
+        {
+          "id": "c11",
+          "title": "Health Probes, Autoscaling and Rolling Deployments",
+          "desc": "Liveness and readiness, HPA, PodDisruptionBudgets, rollout strategies and rollbacks."
+        },
+        {
+          "id": "c12",
+          "title": "Helm",
+          "desc": "Packaging and templating Kubernetes manifests, values, releases and upgrades."
+        },
+        {
+          "id": "c13",
+          "title": "Kubernetes Security",
+          "desc": "RBAC, service accounts, network policies, pod security standards, secrets management and supply chain."
+        },
+        {
+          "id": "c14",
+          "title": "Kubernetes Failure Scenarios and When Not to Use Kubernetes",
+          "desc": "CrashLoopBackOff, pending pods, evictions, DNS failures, and an honest evaluation of alternatives."
+        }
+      ]
+    },
+    {
+      "id": "p07",
+      "num": "VII",
+      "title": "AWS Cloud Infrastructure",
+      "desc": "A practical AWS path from account structure and IAM through VPC networking, compute, storage, databases, security services and observability to complete production deployments with cost awareness.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "Cloud Fundamentals, Regions, Availability Zones and Shared Responsibility",
+          "desc": "What the cloud actually provides, how AWS is physically organised, and who secures what."
+        },
+        {
+          "id": "c02",
+          "title": "AWS Accounts, Organizations and IAM",
+          "desc": "Users, roles, policies, policy evaluation, permission boundaries and multi-account structure."
+        },
+        {
+          "id": "c03",
+          "title": "Temporary Credentials, the AWS CLI and IAM Identity Center",
+          "desc": "Working safely from your laptop and from code: STS, profiles, SSO and never using long-lived keys."
+        },
+        {
+          "id": "c04",
+          "title": "Billing, Tagging, Budgets and Cost Monitoring",
+          "desc": "Understanding the bill, cost allocation tags, budgets and alerts, and the usual surprise charges."
+        },
+        {
+          "id": "c05",
+          "title": "VPC Architecture: Subnets, Route Tables, Internet and NAT Gateways",
+          "desc": "Designing a production VPC, public versus private subnets and how traffic leaves and enters."
+        },
+        {
+          "id": "c06",
+          "title": "Security Groups, Network ACLs, Elastic IPs and VPC Endpoints",
+          "desc": "Layered network controls and keeping traffic to AWS services off the public Internet."
+        },
+        {
+          "id": "c07",
+          "title": "Compute: EC2, AMIs, Instance Types and Auto Scaling Groups",
+          "desc": "Virtual machines on AWS: launching, sizing, baking images, user data and scaling fleets."
+        },
+        {
+          "id": "c08",
+          "title": "Compute: Lambda, ECS and Fargate, EKS and App Runner",
+          "desc": "Serverless and container compute options compared, with guidance on which to use when."
+        },
+        {
+          "id": "c09",
+          "title": "Route 53, Application and Network Load Balancers, CloudFront and ACM",
+          "desc": "Managed DNS, load balancing, CDN and certificates, wired together."
+        },
+        {
+          "id": "c10",
+          "title": "Storage: S3, EBS and EFS",
+          "desc": "Object, block and file storage: durability, consistency, access control, lifecycle and cost."
+        },
+        {
+          "id": "c11",
+          "title": "Databases: RDS, Aurora, DynamoDB and ElastiCache",
+          "desc": "Managed relational, serverless relational, key-value and in-memory stores with configuration guidance."
+        },
+        {
+          "id": "c12",
+          "title": "Security Services: KMS, Secrets Manager, Parameter Store, CloudTrail, Config, GuardDuty, WAF and Shield",
+          "desc": "The AWS security toolkit and a minimum baseline for client accounts."
+        },
+        {
+          "id": "c13",
+          "title": "Observability and Operations: CloudWatch, Logs, Alarms, X-Ray, Systems Manager and AWS Backup",
+          "desc": "Seeing and operating workloads on AWS."
+        },
+        {
+          "id": "c14",
+          "title": "Deployment Walkthrough: A Backend on EC2",
+          "desc": "From AMI to running service behind an ALB with HTTPS, systemd and CloudWatch agent."
+        },
+        {
+          "id": "c15",
+          "title": "Deployment Walkthrough: Containers on ECS Fargate with ECR and an ALB",
+          "desc": "Task definitions, services, HTTPS, secrets injection, logging and zero-downtime deploys."
+        },
+        {
+          "id": "c16",
+          "title": "Deployment Walkthrough: RDS Connectivity, Static Frontends on S3 and CloudFront, CI/CD and Rollbacks",
+          "desc": "Completing the production picture with database access, frontend hosting, pipelines and recovery."
+        }
+      ]
+    },
+    {
+      "id": "p08",
+      "num": "VIII",
+      "title": "Databases and Data Infrastructure",
+      "desc": "Relational and NoSQL fundamentals, schema and index design, transactions and concurrency, pooling, migrations, replication, backups, security, caching and choosing the right store for a client.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "Relational Database Fundamentals with PostgreSQL and MySQL",
+          "desc": "Tables, keys, constraints, SQL, the query lifecycle, and differences between the two major engines."
+        },
+        {
+          "id": "c02",
+          "title": "NoSQL Fundamentals with MongoDB and DynamoDB",
+          "desc": "Document and key-value models, access-pattern-first design, and what you give up."
+        },
+        {
+          "id": "c03",
+          "title": "Schema Design and Relationships",
+          "desc": "Normalisation, denormalisation, one-to-many and many-to-many, soft deletes, time, money and IDs."
+        },
+        {
+          "id": "c04",
+          "title": "Indexes and Query Execution Plans",
+          "desc": "B-trees, composite indexes, covering indexes, EXPLAIN ANALYZE, and finding slow queries."
+        },
+        {
+          "id": "c05",
+          "title": "Transactions, ACID, Isolation Levels and Locks",
+          "desc": "What a transaction guarantees, anomalies, isolation levels, deadlocks and lock contention."
+        },
+        {
+          "id": "c06",
+          "title": "Connection Pooling",
+          "desc": "Why connections are expensive, pool sizing, PgBouncer, RDS Proxy and connection exhaustion incidents."
+        },
+        {
+          "id": "c07",
+          "title": "Migrations",
+          "desc": "Versioned schema changes, zero-downtime patterns, backfills and rollback strategies."
+        },
+        {
+          "id": "c08",
+          "title": "Replication, Read Replicas, Partitioning and Sharding",
+          "desc": "Scaling reads and writes, replication lag, and the complexity sharding brings."
+        },
+        {
+          "id": "c09",
+          "title": "Backups and Point-in-Time Recovery",
+          "desc": "Logical versus physical backups, WAL archiving, RDS snapshots, restore drills and retention."
+        },
+        {
+          "id": "c10",
+          "title": "Database Security and Data Retention",
+          "desc": "Network isolation, least-privilege roles, encryption, auditing and retention policies."
+        },
+        {
+          "id": "c11",
+          "title": "Redis, Caching and Cache Invalidation",
+          "desc": "Data structures, persistence modes, eviction, patterns, and the hard problem of invalidation."
+        },
+        {
+          "id": "c12",
+          "title": "Performance Tuning and Database Scaling",
+          "desc": "Finding bottlenecks, tuning memory and I/O, N+1 queries, and a scaling ladder."
+        },
+        {
+          "id": "c13",
+          "title": "Choosing a Database for a Client Project",
+          "desc": "A decision framework with worked examples."
+        }
+      ]
+    },
+    {
+      "id": "p09",
+      "num": "IX",
+      "title": "System Design and Distributed Systems",
+      "desc": "Requirements, estimation, availability, scaling, consistency, resilience patterns and disaster recovery, followed by eight complete case studies.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "Requirements, Capacity Estimation and Latency Budgets",
+          "desc": "Turning vague asks into numbers you can design against."
+        },
+        {
+          "id": "c02",
+          "title": "Availability, Reliability and Scalability",
+          "desc": "Definitions, the math of nines, single points of failure and the cost of each improvement."
+        },
+        {
+          "id": "c03",
+          "title": "Stateless versus Stateful Services and Load Distribution",
+          "desc": "Where state lives, sticky sessions, and making services horizontally scalable."
+        },
+        {
+          "id": "c04",
+          "title": "Caching Strategies",
+          "desc": "Cache-aside, write-through, write-behind, read-through, hierarchy and coherence."
+        },
+        {
+          "id": "c05",
+          "title": "Consistency Models, CAP and Replication",
+          "desc": "Linearizability to eventual consistency, what CAP actually says, and PACELC."
+        },
+        {
+          "id": "c06",
+          "title": "Leader Election, Distributed Transactions and Eventual Consistency",
+          "desc": "Consensus in brief, sagas, outbox pattern and reconciliation."
+        },
+        {
+          "id": "c07",
+          "title": "Message Brokers",
+          "desc": "Kafka, RabbitMQ, SQS and SNS compared; delivery semantics and design implications."
+        },
+        {
+          "id": "c08",
+          "title": "Resilience Patterns",
+          "desc": "Retries, timeouts, backoff with jitter, circuit breakers, bulkheads, idempotency and distributed locks."
+        },
+        {
+          "id": "c09",
+          "title": "Service Discovery, Fault Tolerance, Graceful Degradation and Rate Limiting",
+          "desc": "Finding services, surviving partial failure and shedding load intentionally."
+        },
+        {
+          "id": "c10",
+          "title": "Disaster Recovery, Multi-Region Architecture and Cost versus Complexity",
+          "desc": "Backup-restore to active-active, and choosing an appropriate tier."
+        },
+        {
+          "id": "c11",
+          "title": "Case Study: URL Shortener",
+          "desc": "Small problem, complete design: ID generation, redirects, analytics and abuse."
+        },
+        {
+          "id": "c12",
+          "title": "Case Study: Authentication Platform",
+          "desc": "Identity for many apps: tokens, sessions, MFA, federation, availability and security."
+        },
+        {
+          "id": "c13",
+          "title": "Case Study: E-commerce Backend",
+          "desc": "Catalog, cart, inventory, orders, payments, consistency and peak traffic."
+        },
+        {
+          "id": "c14",
+          "title": "Case Study: File Upload and Processing Service",
+          "desc": "Large uploads, virus scanning, media processing pipelines and delivery."
+        },
+        {
+          "id": "c15",
+          "title": "Case Study: Real-Time Notification Platform",
+          "desc": "Fan-out, delivery channels, presence, ordering, retries and quiet hours."
+        },
+        {
+          "id": "c16",
+          "title": "Case Study: Multi-Tenant SaaS Platform",
+          "desc": "Tenant isolation, noisy neighbours, per-tenant configuration, billing and compliance."
+        },
+        {
+          "id": "c17",
+          "title": "Case Study: Production Application for a Small Client",
+          "desc": "The pragmatic, affordable, secure architecture most client projects actually need."
+        },
+        {
+          "id": "c18",
+          "title": "Case Study: Highly Available Enterprise Application",
+          "desc": "Multi-AZ, multi-region, strict SLOs, compliance and change control."
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "num": "X",
+      "title": "CI/CD, Infrastructure as Code and Release Engineering",
+      "desc": "Pipelines that build, test, scan and ship software safely; infrastructure defined in code; deployment strategies; and auditable releases.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "CI/CD Fundamentals",
+          "desc": "Continuous integration, delivery and deployment; pipeline stages; what good looks like."
+        },
+        {
+          "id": "c02",
+          "title": "GitHub Actions: Build and Test Pipelines",
+          "desc": "Workflows, jobs, runners, caching, matrices, secrets and OIDC to AWS."
+        },
+        {
+          "id": "c03",
+          "title": "Static Analysis, Dependency Scanning and Secret Scanning",
+          "desc": "Shifting security left with linters, SAST, SCA and pre-commit hooks."
+        },
+        {
+          "id": "c04",
+          "title": "Artifacts and Container Build Pipelines",
+          "desc": "Versioned build outputs, registries, immutable tags, caching and provenance."
+        },
+        {
+          "id": "c05",
+          "title": "Infrastructure as Code and Terraform Fundamentals",
+          "desc": "Declarative infrastructure, providers, resources, plan and apply, modules."
+        },
+        {
+          "id": "c06",
+          "title": "Terraform State, Security, CloudFormation and Configuration Management",
+          "desc": "Remote state and locking, secrets in state, drift, CloudFormation and CDK, Ansible."
+        },
+        {
+          "id": "c07",
+          "title": "Deployment Strategies: Rolling, Blue-Green, Canary and Feature Flags",
+          "desc": "Reducing blast radius during releases."
+        },
+        {
+          "id": "c08",
+          "title": "Database Migration Safety and Rollbacks",
+          "desc": "Expand-contract, backward-compatible changes, and rollback plans that work."
+        },
+        {
+          "id": "c09",
+          "title": "Release Approvals, Supply Chain Security and Audit Trails",
+          "desc": "Protected environments, required reviews, signed artifacts and knowing who deployed what."
+        },
+        {
+          "id": "c10",
+          "title": "Complete Sample Pipeline Walkthrough",
+          "desc": "A production pipeline for a FastAPI service to ECS, explained stage by stage."
+        }
+      ]
+    },
+    {
+      "id": "p11",
+      "num": "XI",
+      "title": "Observability, Reliability and Incident Response",
+      "desc": "Logs, metrics and traces; SLOs and alerting; on-call and incident handling; postmortems; performance and load testing; and proving your backups and DR actually work.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "Logs, Metrics and Traces",
+          "desc": "The three pillars, structured logging, correlation IDs and what each signal is for."
+        },
+        {
+          "id": "c02",
+          "title": "OpenTelemetry and Distributed Tracing",
+          "desc": "Instrumenting services, context propagation, spans and reading a trace."
+        },
+        {
+          "id": "c03",
+          "title": "Prometheus, Grafana, CloudWatch and Dashboards",
+          "desc": "Collecting and visualising metrics; PromQL basics; dashboards that answer questions."
+        },
+        {
+          "id": "c04",
+          "title": "Monitoring versus Observability: SLIs, SLOs, SLAs and Error Budgets",
+          "desc": "Measuring what users experience and making reliability decisions with data."
+        },
+        {
+          "id": "c05",
+          "title": "Health Checks and Alerting Strategies",
+          "desc": "Liveness, readiness, synthetic checks, symptom-based alerts and avoiding alert fatigue."
+        },
+        {
+          "id": "c06",
+          "title": "On-Call and Incident Response",
+          "desc": "Roles, severity levels, communication, runbooks and the first fifteen minutes."
+        },
+        {
+          "id": "c07",
+          "title": "Root Cause Analysis and Blameless Postmortems",
+          "desc": "Finding contributing causes, writing postmortems and turning them into action."
+        },
+        {
+          "id": "c08",
+          "title": "Performance Profiling, Load Testing and Capacity Planning",
+          "desc": "Finding hot paths, k6 load tests, interpreting percentiles and planning headroom."
+        },
+        {
+          "id": "c09",
+          "title": "Backup Verification, Disaster Recovery Testing, RPO and RTO",
+          "desc": "Measuring recoverability and running game days."
+        },
+        {
+          "id": "c10",
+          "title": "Production Incident Scenarios",
+          "desc": "Six realistic incidents walked through with the exact diagnostic process."
+        }
+      ]
+    },
+    {
+      "id": "p12",
+      "num": "XII",
+      "title": "Professional Software Engineering Practices",
+      "desc": "The non-code skills expected of engineers delivering software to clients: requirements, estimation, design documents, testing, review, change management, documentation and communication.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "Requirements Gathering and Technical Specifications",
+          "desc": "Eliciting what clients need, writing specifications and handling non-functional requirements."
+        },
+        {
+          "id": "c02",
+          "title": "Scoping and Estimation",
+          "desc": "Breaking work down, estimating with uncertainty, and communicating ranges honestly."
+        },
+        {
+          "id": "c03",
+          "title": "Design Documents, Architecture Reviews and ADRs",
+          "desc": "Writing designs others can review, running reviews and recording decisions."
+        },
+        {
+          "id": "c04",
+          "title": "Technical Debt and Code Quality",
+          "desc": "Recognising, measuring and paying down debt; standards that scale."
+        },
+        {
+          "id": "c05",
+          "title": "Testing Strategies",
+          "desc": "Unit, integration, contract and end-to-end tests; the pyramid; test data and flakiness."
+        },
+        {
+          "id": "c06",
+          "title": "Code Review",
+          "desc": "Reviewing for correctness, security and maintainability; giving and receiving feedback."
+        },
+        {
+          "id": "c07",
+          "title": "Secure Development Lifecycle and Compliance Awareness",
+          "desc": "Security activities per phase, and SOC 2, ISO 27001, GDPR, HIPAA and PCI at a working level."
+        },
+        {
+          "id": "c08",
+          "title": "Production Change Management",
+          "desc": "Change tickets, approvals, maintenance windows, freeze periods and emergency changes."
+        },
+        {
+          "id": "c09",
+          "title": "Documentation and Stakeholder Communication",
+          "desc": "READMEs, runbooks, architecture docs, status updates and explaining risk to non-engineers."
+        },
+        {
+          "id": "c10",
+          "title": "Client Handovers, Operational Ownership and Professional Incident Management",
+          "desc": "Transferring systems responsibly and behaving well when things break."
+        }
+      ]
+    },
+    {
+      "id": "p13",
+      "num": "XIII",
+      "title": "The Forward Deployed Engineer Playbook",
+      "desc": "Discovery, risk assessment, architecture and cost decisions, integration, credential handling, tenant isolation, deploying into client accounts, readiness reviews, handovers, incidents and stakeholder communication, with scenarios and deliverables.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "The FDE Role and Decision Authority",
+          "desc": "What a Forward Deployed Engineer owns, what to decide alone and what to escalate."
+        },
+        {
+          "id": "c02",
+          "title": "Technical Discovery: Understanding a Client's Infrastructure",
+          "desc": "A structured discovery process, questionnaires and how to read an unfamiliar environment."
+        },
+        {
+          "id": "c03",
+          "title": "Security and Architecture Questions to Ask",
+          "desc": "The question bank, why each matters and what the answers tell you."
+        },
+        {
+          "id": "c04",
+          "title": "Identifying Infrastructure Risks and Assessing Security Posture",
+          "desc": "Finding risk through documentation, configuration review and interviews, never through unauthorised testing."
+        },
+        {
+          "id": "c05",
+          "title": "Choosing a Hosting Architecture and Estimating Costs",
+          "desc": "Decision framework across managed services, containers and serverless, with cost modelling."
+        },
+        {
+          "id": "c06",
+          "title": "Integration Constraints and Integrating with Client Systems",
+          "desc": "Legacy APIs, SSO, data formats, network restrictions and change-averse teams."
+        },
+        {
+          "id": "c07",
+          "title": "Handling Client Credentials and Sensitive Data",
+          "desc": "Receiving, storing, using and destroying credentials; working with regulated data."
+        },
+        {
+          "id": "c08",
+          "title": "Designing Tenant Isolation",
+          "desc": "Choosing an isolation model, enforcing it in every layer, and testing it."
+        },
+        {
+          "id": "c09",
+          "title": "Deploying into Client-Owned Cloud Accounts",
+          "desc": "Cross-account roles, least privilege, IaC ownership, guardrails and exit strategy."
+        },
+        {
+          "id": "c10",
+          "title": "Environment Configuration and Deployment Documentation",
+          "desc": "Configuration matrices, secrets inventories, runbooks and deploy procedures a stranger can follow."
+        },
+        {
+          "id": "c11",
+          "title": "Production Readiness Reviews and Rollback Plans",
+          "desc": "Running a PRR, go/no-go criteria and rollback plans that have been rehearsed."
+        },
+        {
+          "id": "c12",
+          "title": "Technical Handovers",
+          "desc": "Knowledge transfer that sticks: artefacts, sessions, shadowing and acceptance."
+        },
+        {
+          "id": "c13",
+          "title": "Troubleshooting Production Incidents at a Client",
+          "desc": "Working an incident in someone else's environment with limited access and high stakes."
+        },
+        {
+          "id": "c14",
+          "title": "Communicating Technical Tradeoffs to Non-Technical Stakeholders",
+          "desc": "Framing risk, cost and time; sample conversations and written updates."
+        }
+      ]
+    },
+    {
+      "id": "p14",
+      "num": "XIV",
+      "title": "Hands-On Production Projects",
+      "desc": "Six increasingly sophisticated projects: a secure server, a production-ready backend, a Dockerized stack, an AWS deployment, a multi-tenant SaaS and an incident simulator, each with verification, security checks, troubleshooting and cleanup.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "Project 1: Secure Linux Server",
+          "desc": "Provision a VM, lock down SSH, firewall it, serve HTTPS, run a service under systemd and monitor it."
+        },
+        {
+          "id": "c02",
+          "title": "Project 2: Production-Ready Backend",
+          "desc": "A FastAPI API with authentication, authorization, PostgreSQL, migrations, configuration, logging and tests."
+        },
+        {
+          "id": "c03",
+          "title": "Project 3: Dockerized Application",
+          "desc": "Containerise frontend, backend and database with networking, volumes, secrets and a reverse proxy."
+        },
+        {
+          "id": "c04",
+          "title": "Project 4: AWS Production Deployment",
+          "desc": "Deploy with a VPC, ALB, TLS, private subnets, RDS, Secrets Manager, CloudWatch and automated deploys."
+        },
+        {
+          "id": "c05",
+          "title": "Project 5: Multi-Tenant Client SaaS",
+          "desc": "Multiple customers, data separation, background jobs, monitoring, backups and incident procedures."
+        },
+        {
+          "id": "c06",
+          "title": "Project 6: Production Incident Simulator",
+          "desc": "Break things on purpose: failing health checks, connection exhaustion, permissions, secrets and latency."
+        }
+      ]
+    },
+    {
+      "id": "p15",
+      "num": "XV",
+      "title": "Reference Library",
+      "desc": "Checklists, runbooks, templates and the glossary: the documents you will reuse on every engagement.",
+      "chapters": [
+        {
+          "id": "c01",
+          "title": "Production Readiness Checklist",
+          "desc": "The complete checklist, with the reasoning behind each item."
+        },
+        {
+          "id": "c02",
+          "title": "Security Review Checklist",
+          "desc": "A review checklist for applications and infrastructure before launch."
+        },
+        {
+          "id": "c03",
+          "title": "Deployment Runbook Template",
+          "desc": "A fill-in runbook for routine and emergency deployments."
+        },
+        {
+          "id": "c04",
+          "title": "Incident Response Guide",
+          "desc": "Severity matrix, roles, communication templates and the incident timeline."
+        },
+        {
+          "id": "c05",
+          "title": "Architecture Decision Record Examples",
+          "desc": "Six complete ADRs covering common decisions."
+        },
+        {
+          "id": "c06",
+          "title": "Client Project Handover Checklist",
+          "desc": "Everything to deliver and verify when handing a system to a client."
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "words": 3107,
+    "chapters": 205
+  }
+}
