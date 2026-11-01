@@ -282,7 +282,7 @@ details.expand > .expand-body { padding: 0 16px 14px; border-top: 1px solid var(
 .diagram .node.k-client rect { stroke: var(--purple); } .diagram .node.k-edge rect { stroke: var(--info); } .diagram .node.k-app rect { stroke: var(--accent); } .diagram .node.k-data rect { stroke: var(--ok); } .diagram .node.k-ext rect { stroke: var(--warn); stroke-dasharray: 4 3; } .diagram .node.k-danger rect { stroke: var(--danger); }
 .diagram .edge path { fill: none; stroke: var(--fg-faint); stroke-width: 1.4; }
 .diagram .edge.hl path { stroke: var(--accent); stroke-width: 2.2; }
-.diagram .edge text { fill: var(--fg-muted); font-size: 10.5px; }
+.diagram .edge text { fill: var(--fg-muted); font-size: 10.5px; paint-order: stroke; stroke: var(--bg-elev); stroke-width: 3px; stroke-linejoin: round; }
 .diagram .edge.hl text { fill: var(--accent); font-weight: 600; }
 .diagram .zone rect { fill: none; stroke: var(--border-strong); stroke-dasharray: 5 4; rx: 10; }
 .diagram .zone text { fill: var(--fg-faint); font-size: 11px; font-weight: 600; letter-spacing: .04em; }
@@ -302,7 +302,7 @@ details.expand > .expand-body { padding: 0 16px 14px; border-top: 1px solid var(
 .flow .actor text { fill: var(--fg); font-size: 12px; font-weight: 600; }
 .flow .lifeline { stroke: var(--border); stroke-dasharray: 3 4; }
 .flow .msg path { stroke: var(--fg-faint); stroke-width: 1.3; fill: none; opacity: .35; }
-.flow .msg text { fill: var(--fg-muted); font-size: 10.5px; opacity: .45; }
+.flow .msg text { fill: var(--fg-muted); font-size: 10.5px; opacity: .45; paint-order: stroke; stroke: var(--bg-elev); stroke-width: 3px; stroke-linejoin: round; }
 .flow .msg.done path { opacity: .8; } .flow .msg.done text { opacity: .9; }
 .flow .msg.cur path { stroke: var(--accent); stroke-width: 2.4; opacity: 1; }
 .flow .msg.cur text { fill: var(--accent); font-weight: 700; opacity: 1; }

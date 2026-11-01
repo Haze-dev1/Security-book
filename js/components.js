@@ -30,7 +30,7 @@ window.Components = (function () {
       const rows = {};
       nodes.forEach((n) => { n.col = layer[n.id]; n.row = rows[n.col] = (rows[n.col] ?? -1) + 1; });
     }
-    const W = 150, H = 54, GX = 70, GY = 26, PAD = 24;
+    const W = 150, H = 54, GX = 96, GY = 26, PAD = 24;
     const cols = Math.max(...nodes.map((n) => n.col)) + 1;
     const rowsPerCol = {}; nodes.forEach((n) => (rowsPerCol[n.col] = Math.max(rowsPerCol[n.col] || 0, n.row + 1)));
     const maxRows = Math.max(...Object.values(rowsPerCol));
